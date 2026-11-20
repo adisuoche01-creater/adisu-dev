@@ -1,0 +1,1563 @@
+index.html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adisu Oche Zemedkun | Full-Stack Developer & System Administrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #050914;
+      --bg-soft: #0b1224;
+      --card: rgba(13, 21, 40, 0.84);
+      --card-hover: rgba(20, 32, 60, 0.96);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #0ea5e9;
+      --secondary: #6366f1;
+      --emerald: #10b981;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 60px rgba(2, 6, 23, 0.58);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-soft: #eef2f6;
+      --card: rgba(255, 255, 255, 0.92);
+      --card-hover: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #0284c7;
+      --secondary: #4f46e5;
+      --emerald: #059669;
+      --border: rgba(15, 23, 42, 0.12);
+      --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Animated IT Network Background */
+    #it-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.72;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Menu Bar: Home, Service, Skills, Projects, Blog, Contact */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 9, 20, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    [data-theme="light"] header {
+      background: rgba(248, 250, 252, 0.88);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+    }
+
+    .brand span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    /* Hero / Home */
+    .hero {
+      padding: 4.2rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(14, 165, 233, 0.14);
+      border: 1px solid rgba(14, 165, 233, 0.35);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .dot-live {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.22);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.05rem, 4.2vw, 3.35rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.8px;
+      margin-bottom: 1rem;
+    }
+
+    .grad {
+      background: linear-gradient(95deg, var(--primary), var(--secondary), var(--emerald));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 630px;
+      margin-bottom: 1.55rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.78rem 1.35rem;
+      border-radius: 11px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(14, 165, 233, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.9rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-card span {
+      font-size: 0.77rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.3rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      text-align: center;
+    }
+
+    .profile-img-box {
+      width: 100%;
+      aspect-ratio: 4 / 4.1;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(14, 165, 233, 0.38);
+      background: var(--bg-soft);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .profile-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-caption {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      background: rgba(5, 9, 20, 0.78);
+      backdrop-filter: blur(8px);
+      color: #f8fafc;
+      padding: 0.4rem 0.7rem;
+      border-radius: 9px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .profile-card h2 {
+      font-size: 1.18rem;
+      font-weight: 800;
+    }
+
+    .profile-card .sub-role {
+      font-size: 0.83rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+    }
+
+    /* Compact Mini App Dock */
+    .mini-dock {
+      display: inline-flex;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 13px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+    }
+
+    .dock-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 0.82rem;
+      transition: transform 0.2s ease;
+    }
+
+    .dock-icon:hover {
+      transform: translateY(-3px) scale(1.1);
+    }
+
+    .bg-github { background: linear-gradient(135deg, #24292f, #0d1117); border: 1px solid rgba(255,255,255,0.2); }
+    .bg-facebook { background: linear-gradient(135deg, #1877f2, #0d53b8); }
+    .bg-tiktok { background: linear-gradient(135deg, #09090b, #18181b); border: 1px solid #ff0050; box-shadow: -1.5px 0 0 #00f2ea, 1.5px 0 0 #ff0050; }
+    .bg-telegram { background: linear-gradient(135deg, #2aabee, #229ed9); }
+    .bg-phone { background: linear-gradient(135deg, #10b981, #047857); }
+    .bg-email { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+    /* Sections */
+    section {
+      padding: 3.8rem 0;
+    }
+
+    .sec-head {
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 0.3rem;
+    }
+
+    .sec-head h2 {
+      font-size: clamp(1.65rem, 3vw, 2.3rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .sec-head p {
+      color: var(--muted);
+      max-width: 700px;
+      margin-top: 0.4rem;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .service-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.4rem;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .service-box:hover {
+      background: var(--card-hover);
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: rgba(14, 165, 233, 0.14);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      margin-bottom: 0.95rem;
+    }
+
+    .service-box h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .service-box p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.45rem;
+      backdrop-filter: blur(12px);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h3 i {
+      color: var(--primary);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.9rem;
+    }
+
+    .tag {
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 0.32rem 0.72rem;
+      border-radius: 999px;
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--text);
+      border: 1px solid rgba(14, 165, 233, 0.24);
+    }
+
+    /* My Projects (2 Featured Image Cards: Bank Management System & Library Management System) */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.6rem;
+    }
+
+    .project-media-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      transition: 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-media-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-img-slot {
+      width: 100%;
+      aspect-ratio: 16 / 9.5;
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      cursor: zoom-in;
+    }
+
+    .project-img-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .project-img-slot:hover img {
+      transform: scale(1.03);
+    }
+
+    .proj-float-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(5, 9, 20, 0.82);
+      backdrop-filter: blur(8px);
+      color: var(--primary);
+      border: 1px solid rgba(14, 165, 233, 0.35);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.28rem 0.68rem;
+      border-radius: 8px;
+    }
+
+    .project-media-body {
+      padding: 1.45rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-media-body h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .project-media-body h3 i {
+      color: var(--primary);
+    }
+
+    .project-media-body p {
+      font-size: 0.91rem;
+      color: var(--muted);
+    }
+
+    /* Certificates */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      transition: 0.25s ease;
+    }
+
+    .cert-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .cert-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      cursor: zoom-in;
+    }
+
+    .cert-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .cert-img:hover img {
+      transform: scale(1.03);
+    }
+
+    .zoom-chip {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(5, 9, 20, 0.78);
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 0.28rem 0.6rem;
+      border-radius: 8px;
+    }
+
+    .cert-body {
+      padding: 1.25rem;
+    }
+
+    .cert-body h3 {
+      font-size: 1.06rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .cert-body p {
+      font-size: 0.89rem;
+      color: var(--muted);
+    }
+
+    /* Blog */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .blog-meta {
+      font-size: 0.76rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    /* Very Compact Mini Application Launcher + Map + QR Code */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .app-launcher {
+      background: var(--card);
+      border: 1px solid rgba(14, 165, 233, 0.28);
+      border-radius: 22px;
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .launcher-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      color: var(--muted);
+      font-weight: 700;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem 0.5rem;
+    }
+
+    .app-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0.55rem 0.3rem;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .app-tile:hover {
+      background: rgba(14, 165, 233, 0.09);
+      border-color: rgba(14, 165, 233, 0.32);
+      transform: translateY(-3px);
+    }
+
+    .app-tile:active {
+      transform: scale(0.93);
+    }
+
+    /* Very Small Application Icon Size */
+    .app-squircle {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 0.38rem;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.32);
+    }
+
+    .app-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .app-sub {
+      font-size: 0.65rem;
+      color: var(--muted);
+      max-width: 96px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-top: 0.1rem;
+    }
+
+    .launcher-footer-note {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .map-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 340px;
+      box-shadow: var(--shadow);
+    }
+
+    .map-header {
+      padding: 0.85rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      flex: 1;
+      min-height: 290px;
+      border: 0;
+      display: block;
+    }
+
+    /* QR Code Scan Section */
+    .qr-section-card {
+      margin-top: 1.5rem;
+      background: var(--card);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      border-radius: 22px;
+      padding: 1.45rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      display: grid;
+      grid-template-columns: 205px 1fr;
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    .qr-visual {
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      border: 2.5px solid var(--primary);
+    }
+
+    .qr-visual img {
+      width: 175px;
+      height: 175px;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .qr-controls h3 {
+      font-size: 1.18rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .qr-controls h3 i {
+      color: var(--primary);
+    }
+
+    .qr-controls p {
+      color: var(--muted);
+      font-size: 0.89rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .qr-presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .qr-preset-btn {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--text);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .qr-preset-btn.active,
+    .qr-preset-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .qr-input-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .qr-input {
+      flex: 1;
+      min-width: 210px;
+      padding: 0.7rem 0.95rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--text);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .qr-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Modal & Toast */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.88);
+      backdrop-filter: blur(8px);
+      display: none;
+      place-items: center;
+      padding: 1.5rem;
+      z-index: 1000;
+    }
+
+    .modal.open {
+      display: grid;
+    }
+
+    .modal img {
+      max-width: min(920px, 95vw);
+      max-height: 85vh;
+      border-radius: 16px;
+      border: 2px solid var(--primary);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%) translateY(90px);
+      background: #0f172a;
+      color: #f8fafc;
+      border: 1px solid var(--primary);
+      padding: 0.7rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+      z-index: 999;
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.8rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .skills-grid,
+      .projects-grid,
+      .cert-grid,
+      .blog-grid,
+      .contact-grid,
+      .qr-section-card {
+        grid-template-columns: 1fr;
+      }
+
+      .qr-visual {
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        text-align: center;
+        padding-top: 2.4rem;
+      }
+
+      .hero-desc {
+        margin-inline: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .menu-btn {
+        display: grid;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 1.2rem 5%;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated IT Network Background -->
+  <canvas id="it-canvas"></canvas>
+
+  <!-- Menu Bar: Home, Service, Skills, Projects, Blog, Contact -->
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <span class="brand-box"><i class="fa-solid fa-terminal"></i></span>
+        Adisu<span>.Dev</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="active">Home</a>
+        <a href="#service">Service</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle Theme" title="Switch Dark/Light Theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HOME -->
+    <section id="home" class="hero container">
+      <div>
+        <div class="pill-badge">
+          <span class="dot-live"></span>
+          4th Year IT Student • Werabe University
+        </div>
+        <h1>
+          Adisu Oche Zemedkun — <span class="grad">Full-Stack Developer</span> & Future System Administrator
+        </h1>
+        <p class="hero-desc">
+          Building modern frontend & backend web systems, relational databases, and dependable IT infrastructure. Combining full-stack software engineering with a clear career vision to serve as a System Administrator in a leading organization.
+        </p>
+        <div class="hero-actions">
+          <a href="#service" class="btn btn-primary"><i class="fa-solid fa-layer-group"></i> Explore Services</a>
+          <a href="#qr-hub" class="btn btn-outline"><i class="fa-solid fa-qrcode"></i> Scan QR Code</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <strong>4th Year</strong>
+            <span>IT • Werabe Univ.</span>
+          </div>
+          <div class="stat-card">
+            <strong>Full-Stack</strong>
+            <span>Frontend & Backend</span>
+          </div>
+          <div class="stat-card">
+            <strong>SysAdmin</strong>
+            <span>Future Career Goal</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div class="profile-img-box">
+          <!-- Save your personal photo as profile.jpg in the same folder -->
+          <img src="profile.jpg" alt="Adisu Oche Zemedkun" onerror="this.src='https://via.placeholder.com/520x540/0b1224/0ea5e9?text=Adisu+Oche+Zemedkun+(profile.jpg)'" />
+          <div class="profile-caption">
+            <span><i class="fa-solid fa-location-dot" style="color:#38bdf8;"></i> Werabe, Ethiopia</span>
+            <span>IT Student</span>
+          </div>
+        </div>
+        <h2>Adisu Oche Zemedkun</h2>
+        <div class="sub-role">Full-Stack Developer | Future System Administrator</div>
+
+        <!-- Very Small Mini Application Icons -->
+        <div class="mini-dock" title="Tap any mini app icon">
+          <a class="dock-icon bg-github" href="https://github.com/adisuoche01-creater" target="_blank" onclick="launchToast('GitHub')" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a class="dock-icon bg-facebook" href="https://web.facebook.com/profile.php?id=61567536098860" target="_blank" onclick="launchToast('Facebook')" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="dock-icon bg-tiktok" href="https://www.tiktok.com/@aradoch.bet" target="_blank" onclick="launchToast('TikTok')" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a class="dock-icon bg-telegram" href="https://t.me/Mizan_oz" target="_blank" onclick="launchToast('Telegram')" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+          <a class="dock-icon bg-phone" href="tel:+251930156102" onclick="launchToast('Phone Call')" title="Call +251930156102"><i class="fa-solid fa-phone"></i></a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- 2. SERVICE -->
+    <section id="service" class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Services & Capabilities</span>
+        <h2>Professional IT & Development Services</h2>
+        <p>Delivering full-stack web applications, database-driven management systems, system administration readiness, and digital workflows.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-box">
+          <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+          <h3>Frontend Web Development</h3>
+          <p>Responsive, fast, and user-centered web interfaces crafted with HTML5, CSS3, and JavaScript for mobile and desktop browsers.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-icon"><i class="fa-solid fa-database"></i></div>
+          <h3>Backend & MySQL Systems</h3>
+          <p>Dynamic server-side logic, authentication workflows, and structured MySQL databases built with PHP, Java, C#, and XAMPP.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-icon"><i class="fa-solid fa-server"></i></div>
+          <h3>System & Network Admin</h3>
+          <p>Focused path toward System Administration—covering server reliability, user access control, Cisco VLAN basics, and troubleshooting.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-icon"><i class="fa-solid fa-laptop-file"></i></div>
+          <h3>Management & Desktop Apps</h3>
+          <p>Enterprise-style Bank & Library Management Systems, desktop utilities in VB.NET/C#/Java, and mobile prototypes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SKILLS -->
+    <section id="skills" class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Technical Stack</span>
+        <h2>Core Skills & Engineering Tools</h2>
+        <p>Practical skills gained across software engineering, relational databases, networking fundamentals, and system administration.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="card">
+          <h3><i class="fa-solid fa-window-maximize"></i> Frontend Engineering</h3>
+          <p>Building clean layouts, interactive components, and mobile-optimized web experiences.</p>
+          <div class="tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Responsive Design</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fa-solid fa-database"></i> Backend & Programming</h3>
+          <p>Developing data-driven web backends, management systems, and desktop applications.</p>
+          <div class="tags">
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">XAMPP</span>
+            <span class="tag">Java</span>
+            <span class="tag">C# / VB.NET</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fa-solid fa-network-wired"></i> Systems, Git & Mobile</h3>
+          <p>Foundational switch/VLAN networking, version control, Android development, and media tools.</p>
+          <div class="tags">
+            <span class="tag">System Admin Path</span>
+            <span class="tag">Cisco VLAN Basics</span>
+            <span class="tag">Git & GitHub</span>
+            <span class="tag">Android Studio</span>
+            <span class="tag">Sketchware Pro</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MY Feutured PROJECTS (2 Image Slots: Bank Management System & Library Management System) + CERTIFICATES -->
+    <section id="projects" class="container">
+      <div class="sec-head">
+        <span class="eyebrow">My Project</span>
+        <h2>Featured Projects</h2>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: Bank Management System -->
+        <article class="project-media-card">
+          <div class="project-img-slot" onclick="openImageModal(this.querySelector('img').src)">
+            <span class="proj-float-badge"><i class="fa-solid fa-building-columns"></i> Project 01</span>
+            <img src="bank-project.jpg" alt="Bank Management System" onerror="this.src='https://via.placeholder.com/840x500/0b1224/0ea5e9?text=Bank+Management+System+(bank-project.jpg)'" />
+            <span class="zoom-chip"><i class="fa-solid fa-expand"></i> Zoom</span>
+          </div>
+          <div class="project-media-body">
+            <div>
+              <h3><i class="fa-solid fa-building-columns"></i> Bank Management System</h3>
+              <p>
+                A complete banking operations software supporting customer account creation, secure authentication, deposits, withdrawals, balance inquiry, and transaction history tracking backed by a structured relational database.
+              </p>
+            </div>
+            <div class="tags">
+              <span class="tag">Full-Stack / Desktop</span>
+              <span class="tag">MySQL Database</span>
+              <span class="tag">Secure Auth</span>
+              <span class="tag">Transaction Logs</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Library Management System -->
+        <article class="project-media-card">
+          <div class="project-img-slot" onclick="openImageModal(this.querySelector('img').src)">
+            <span class="proj-float-badge"><i class="fa-solid fa-book-open"></i> Project 02</span>
+            <img src="library-project.jpg" alt="Library Management System" onerror="this.src='https://via.placeholder.com/840x500/0b1224/6366f1?text=Library+Management+System+(library-project.jpg)'" />
+            <span class="zoom-chip"><i class="fa-solid fa-expand"></i> Zoom</span>
+          </div>
+          <div class="project-media-body">
+            <div>
+              <h3><i class="fa-solid fa-book-open"></i> Library Management System</h3>
+              <p>
+                An automated digital library system designed for cataloging books, registering student/staff members, managing book borrowing and return dates, searching inventory, and generating availability reports.
+              </p>
+            </div>
+            <div class="tags">
+              <span class="tag">PHP / C# / Java</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Book Inventory</span>
+              <span class="tag">Issue & Return</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Certificates Subsection-->
+      <div style="margin-top: 3rem;">
+        <h3 style="font-size: 1.32rem; margin-bottom: 1rem;"><i class="fa-solid fa-award" style="color: var(--primary);"></i> Certificates</h3>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <div class="cert-img" onclick="openImageModal(this.querySelector('img').src)">
+              <img src="cert1.jpg" alt="Certificate 1 - 5 Million Ethiopian Coders / Udacity" onerror="this.src='https://via.placeholder.com/840x520/0b1224/0ea5e9?text=Certificate+1+(cert1.jpg)'" />
+              <span class="zoom-chip"><i class="fa-solid fa-expand"></i> Zoom</span>
+            </div>
+            <div class="cert-body">
+              <h3>5 Million Ethiopian Coders</h3>
+              <p>Certified completion under Ethiopia's national coding program demonstrating foundational technical and digital skills.</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-img" onclick="openImageModal(this.querySelector('img').src)">
+              <img src="cert2.jpg" alt="First Certificate- Academic / Technical Credential" onerror="this.src='https://via.placeholder.com/840x520/0b1224/6366f1?text=Certificate+2+(cert2.jpg)'" />
+              <span class="zoom-chip"><i class="fa-solid fa-expand"></i> Zoom</span>
+            </div>
+            <div class="cert-body">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BLOG -->
+    <section id="blog" class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Insights & Notes</span>
+        <h2>Engineering & System Administration Blog</h2>
+        <p>Notes on full-stack development, growing into a System Administrator, and building reliable IT systems.</p>
+      </div>
+
+      <div class="blog-grid">
+        <article class="card">
+          <div class="blog-meta"><span><i class="fa-solid fa-server"></i> Career Path</span><span>SysAdmin</span></div>
+          <h3>Why Full-Stack Skills Make a Stronger System Administrator</h3>
+          <p>Understanding how frontend requests, backend logic, and MySQL queries behave helps diagnose server bottlenecks and security issues faster.</p>
+        </article>
+
+        <article class="card">
+          <div class="blog-meta"><span><i class="fa-solid fa-network-wired"></i> Infrastructure</span><span>Networking</span></div>
+          <h3>Foundations of Switch VLANs & Reliable Campus Networks</h3>
+          <p>Segmenting traffic with VLANs improves broadcast control, organization, and security across institutional and enterprise environments.</p>
+        </article>
+
+        <article class="card">
+          <div class="blog-meta"><span><i class="fa-solid fa-database"></i> Database Systems</span><span>Architecture</span></div>
+          <h3>Designing Reliable Bank & Library Databases</h3>
+          <p>Normalized tables, transaction integrity, and role-based access control keep institutional management systems accurate and secure.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. CONTACT (Compact Small Application Icons + Werabe Google Map + QR Code Scanner) -->
+    <section id="contact" class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Compact App Hub, Map & QR Code</span>
+        <h2>Tap Any Mini Application or Scan QR Code</h2>
+        <p>Tap any compact application icon below to open GitHub, Facebook, TikTok, Telegram, Phone, or Email directly—or scan the QR Code with your phone.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Very Small Compact Application Form / Launcher -->
+        <div class="app-launcher">
+          <div>
+            <div class="launcher-bar">
+              <span><i class="fa-solid fa-grid-2"></i> Mini Apps</span>
+              <span>Tap to Open</span>
+            </div>
+
+            <div class="apps-grid">
+              <a class="app-tile" href="https://github.com/adisuoche01-creater" target="_blank" rel="noopener" onclick="launchToast('GitHub (@adisuoche01-creater)')">
+                <div class="app-squircle bg-github">
+                  <i class="fa-brands fa-github"></i>
+                </div>
+                <span class="app-title">GitHub</span>
+                <span class="app-sub">adisuoche01-creater</span>
+              </a>
+
+              <a class="app-tile" href="https://web.facebook.com/profile.php?id=61567536098860" target="_blank" rel="noopener" onclick="launchToast('Facebook Profile')">
+                <div class="app-squircle bg-facebook">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </div>
+                <span class="app-title">Facebook</span>
+                <span class="app-sub">Adisu Oche</span>
+              </a>
+
+              <a class="app-tile" href="https://www.tiktok.com/@aradoch.bet" target="_blank" rel="noopener" onclick="launchToast('TikTok (@aradoch.bet)')">
+                <div class="app-squircle bg-tiktok">
+                  <i class="fa-brands fa-tiktok"></i>
+                </div>
+                <span class="app-title">TikTok</span>
+                <span class="app-sub">@aradoch.bet</span>
+              </a>
+
+              <a class="app-tile" href="https://t.me/Mizan_oz" target="_blank" rel="noopener" onclick="launchToast('Telegram (@Mizan_oz)')">
+                <div class="app-squircle bg-telegram">
+                  <i class="fa-brands fa-telegram"></i>
+                </div>
+                <span class="app-title">Telegram</span>
+                <span class="app-sub">@Mizan_oz</span>
+              </a>
+
+              <a class="app-tile" href="tel:+251930156102" onclick="launchToast('Phone (+251930156102)')">
+                <div class="app-squircle bg-phone">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <span class="app-title">Phone</span>
+                <span class="app-sub">+251930156102</span>
+              </a>
+
+              <a class="app-tile" href="mailto:adisuoche01@gmail.com" onclick="launchToast('Email (adisuoche01@gmail.com)')">
+                <div class="app-squircle bg-email">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <span class="app-title">Email</span>
+                <span class="app-sub">adisuoche01@gmail.com</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="launcher-footer-note">
+            <i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Tap any icon above to launch directly in its app or browser.
+          </div>
+        </div>
+
+        <!-- Google Map (Werabe, Ethiopia) -->
+        <div class="map-box">
+          <div class="map-header">
+            <span><i class="fa-solid fa-location-dot" style="color: var(--primary);"></i> <strong>Werabe University, Werabe, Ethiopia</strong></span>
+            <a href="https://maps.google.com/?q=Werabe+University,+Werabe,+Ethiopia" target="_blank" style="color: var(--primary); font-weight: 700;">Open Map &nearr;</a>
+          </div>
+          <iframe
+            title="Werabe Ethiopia Google Map"
+            src="https://maps.google.com/maps?q=Werabe%20University%2C%20Werabe%2C%20Ethiopia&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Instant Phone Scan QR Code Card -->
+      <div id="qr-hub" class="qr-section-card">
+        <div class="qr-visual">
+          <img id="qrImage" src="" alt="Portfolio QR Code" />
+        </div>
+
+        <div class="qr-controls">
+          <h3><i class="fa-solid fa-qrcode"></i> Scan QR Code with Your Phone</h3>
+          <p>
+            Scan this QR code using any smartphone camera to open immediately. Switch between your Portfolio URL, GitHub, Telegram, TikTok, or Facebook—or paste any link below.
+          </p>
+
+          <div class="qr-presets">
+            <button type="button" class="qr-preset-btn active" onclick="setQrPreset('https://github.com/adisuoche01-creater', this)">GitHub</button>
+            <button type="button" class="qr-preset-btn" onclick="setQrPreset('https://t.me/Mizan_oz', this)">Telegram</button>
+            <button type="button" class="qr-preset-btn" onclick="setQrPreset('https://www.tiktok.com/@aradoch.bet', this)">TikTok</button>
+            <button type="button" class="qr-preset-btn" onclick="setQrPreset('https://web.facebook.com/profile.php?id=61567536098860', this)">Facebook</button>
+            <button type="button" class="qr-preset-btn" onclick="setQrPreset('https://fayun.netlify.app', this)">Portfolio Link</button>
+          </div>
+
+          <div class="qr-input-row">
+            <input type="url" id="qrUrlInput" class="qr-input" value="https://github.com/adisuoche01-creater" placeholder="Paste your live portfolio or profile URL..." oninput="updateQrFromInput()" />
+            <a id="qrDownloadBtn" href="" download="Adisu-Oche-QRCode.png" class="btn btn-primary" onclick="launchToast('Downloading QR Code')">
+              <i class="fa-solid fa-download"></i> Save QR
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Image Lightbox Modal (Works for Projects & Certificates) -->
+  <div class="modal" id="imgModal" onclick="this.classList.remove('open')">
+    <img id="imgModalSrc" src="" alt="Full Preview" />
+  </div>
+
+  <!-- App Launch Toast -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-arrow-up-right-from-square" style="color: #38bdf8;"></i>
+    <span id="toastText">Opening application...</span>
+  </div>
+
+  <footer>
+    <div class="container">
+      &copy; <span id="year"></span> Adisu Oche Zemedkun • Full-Stack Developer & Future System Administrator • Werabe, Ethiopia
+    </div>
+  </footer>
+
+  <script>
+    // Animated IT Network Background
+    const canvas = document.getElementById('it-canvas');
+    const ctx = canvas.getContext('2d');
+    let nodes = [];
+    const nodeCount = 55;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.65,
+        vy: (Math.random() - 0.5) * 0.65,
+        r: Math.random() * 2.2 + 1.2
+      });
+    }
+
+    function drawNetwork() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const dotColor = isLight ? 'rgba(2, 132, 199, 0.45)' : 'rgba(56, 189, 248, 0.55)';
+      const lineColor = isLight ? 'rgba(79, 70, 229, 0.12)' : 'rgba(99, 102, 241, 0.16)';
+
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        a.x += a.vx;
+        a.y += a.vy;
+        if (a.x < 0 || a.x > canvas.width) a.vx *= -1;
+        if (a.y < 0 || a.y > canvas.height) a.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+        ctx.fillStyle = dotColor;
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < 135) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(drawNetwork);
+    }
+    drawNetwork();
+
+    // Mobile Menu & Active Link Highlight
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const allNavLinks = navLinks.querySelectorAll('a');
+
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+    allNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        allNavLinks.forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // Dark / Light Theme Toggle
+    const themeBtn = document.getElementById('themeBtn');
+    const htmlEl = document.documentElement;
+    themeBtn.addEventListener('click', () => {
+      const next = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', next);
+      themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    });
+
+    // Full-screen Image Modal (Projects & Certificates)
+    function openImageModal(src) {
+      document.getElementById('imgModalSrc').src = src;
+      document.getElementById('imgModal').classList.add('open');
+    }
+
+    // QR Code Generator
+    const qrImage = document.getElementById('qrImage');
+    const qrUrlInput = document.getElementById('qrUrlInput');
+    const qrDownloadBtn = document.getElementById('qrDownloadBtn');
+
+    function generateQrSrc(url) {
+      const cleanUrl = (url || '').trim() || 'https://github.com/adisuoche01-creater';
+      return 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&data=' + encodeURIComponent(cleanUrl);
+    }
+
+    function setQrPreset(url, btnEl) {
+      qrUrlInput.value = url;
+      document.querySelectorAll('.qr-preset-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      updateQrFromInput();
+    }
+
+    function updateQrFromInput() {
+      const src = generateQrSrc(qrUrlInput.value);
+      qrImage.src = src;
+      qrDownloadBtn.href = src;
+    }
+
+    if (window.location.protocol.startsWith('http')) {
+      qrUrlInput.value = window.location.href;
+    }
+    updateQrFromInput();
+
+    // App Launch Toast
+    let toastTimer;
+    function launchToast(appName) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').textContent = 'Opening ' + appName + '...';
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
